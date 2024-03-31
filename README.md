@@ -5,6 +5,10 @@
 ### back-end
 ```
   Node.js, Express e MySQL
+  "cors": "^2.8.5",
+  "express": "^4.19.2",
+  "mysql": "^2.18.1",
+  "nodemon": "^3.1.0"
 ```
 
 ### Front-end
