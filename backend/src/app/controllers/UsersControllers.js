@@ -3,6 +3,11 @@ import UsersRepository from "../repositories/UsersRepository.js";
 
 class UsersController {
 
+  async findAll(req, res) {
+    const user = await UsersRepository.findAll()
+    return res.status(200).json(user)
+  }
+
   async store(req, res) {
     const { email, password } = req.body;
     try {
@@ -14,6 +19,17 @@ class UsersController {
       return res.status(400).json({ error: error.message });
     }
   }
+  
+  async login(req, res) {
+    const {email, password} = req.body;
+    try {
+      const user = await UsersRepository.login(email, password);
+      return res.status(200).json({ message: "Usuário logado", user });
+    } catch (error) {
+      return res.status(400).json({error: error.message });
+    }
+  }
+
 }
 
 export default new UsersController();
